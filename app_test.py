@@ -27,8 +27,7 @@ async def get_newsarticles(news: NewsArticle):
     
     for i in t['urls'][0:1]:
 
-        try:
-            ## following is the code to extract the title and the body of the news from the above got url
+        ## following is the code to extract the title and the body of the news from the above got url
             x1 = {"url": i}
             #response1 = requests.post('http://localhost:8009/getarticle', data = json.dumps(x1))
             response1 = requests.post('http://20.204.224.207:8009/getBodyContentFromUrl', data = json.dumps(x1))
@@ -71,34 +70,11 @@ async def get_newsarticles(news: NewsArticle):
                         "summary":summarized_text,
                         "sentiment":sentiment["label"],
                         "sentiment_score":sentiment['score']})
-        except Exception as e:
-            return e
 
-
-
-    
-        
-
-
-
+       
     return final
     
 
-
-    
-
-
-
-"""
-
-@app.post('/keyword_sentiment_post_text')
-def get_keyword_sentiment(keyword_sentiment_post:Sentiment):
-    t = {"text":keyword_sentiment_post.sentimenttext}
-    response = requests.post('http://second:8080/getsentiment', data = json.dumps(t))
-    response = response.text
-    return (json.loads(response))
-
-"""
 
 
 if __name__ == "__main__":
