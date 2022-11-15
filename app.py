@@ -78,21 +78,5 @@ def get_newsarticles(news: NewsArticle):
     
 
 
-    
-
-
-
-"""
-
-@app.post('/keyword_sentiment_post_text')
-def get_keyword_sentiment(keyword_sentiment_post:Sentiment):
-    t = {"text":keyword_sentiment_post.sentimenttext}
-    response = requests.post('http://second:8080/getsentiment', data = json.dumps(t))
-    response = response.text
-    return (json.loads(response))
-
-"""
-
-
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8080)
